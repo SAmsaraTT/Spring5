@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+<!--配置连接池-->
+<!--    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">-->
+<!--    &lt;!&ndash; dataSource.setDriverClassName("com.mysql.jdbc.Driver");-->
+<!--			set方法注入-->
+<!--		&ndash;&gt;-->
+<!--    &lt;!&ndash; 获取properties文件内容，根据key获取，使用spring表达式获取 &ndash;&gt;-->
+<!--    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>-->
+<!--    <property name="url" value="jdbc:mysql://localhost:3306/test?characterEncoding=utf8&amp;rewriteBatchedStatements=true"></property>-->
+<!--    <property name="username" value="root"></property>-->
+<!--    <property name="password" value="soul990719"></property>-->
+<!--    </bean>-->
+
+<!--引入外部属性文件-->
+    <context:property-placeholder location="jdbc.properties"/>
+        <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <!-- dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+    			set方法注入
+    		-->
+        <!-- 获取properties文件内容，根据key获取，使用spring表达式获取 -->
+        <property name="driverClassName" value="${driverClassName}"></property>
+        <property name="url" value="${url}"></property>
+        <property name="username" value="${username}"></property>
+        <property name="password" value="${password}"></property>
+        </bean>
+
+</beans>
